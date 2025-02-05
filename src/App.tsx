@@ -1,27 +1,27 @@
 
 import './App.css'
-import { useFeatureFlag } from './Hooks/useFeatureFlag'
+import { useEffect, useState } from 'react';
+import FeatureFlagsExample from './FeatureFlagsExample';
 
 
 
 function App() {
-    const enableFeature1 = useFeatureFlag('enableFeature1');
-    const enableFeature2 = useFeatureFlag('enableFeature2');
+    const [key, setKey] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setKey(prevKey => prevKey + 1);
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <>
             <h1>Feature Flags</h1>
-
-            {enableFeature1 && <h2>Feature1 Enabled</h2>}
-            {!enableFeature1 && <h2>Feature1 Disabled</h2>}
-
-            <hr />
-
-            {enableFeature2 && <h2>Feature2 Enabled</h2>}
-            {!enableFeature2 && <h2>Feature2 Disabled</h2>}
-
+            <FeatureFlagsExample key={key} />
         </>
-    )
+    );
 }
 
 export default App

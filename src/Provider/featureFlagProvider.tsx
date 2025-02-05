@@ -33,8 +33,8 @@ export const FeatureFlagProvider: React.FC<{ children: React.ReactNode; }> = ({ 
         // Fetch flags initially
         fetchFlags();
 
-        // Poll every 5 minutes (300,000 milliseconds)
-        const intervalId = setInterval(fetchFlags, 300000);
+        // Poll every 10 seconds (10,000 milliseconds)
+        const intervalId = setInterval(fetchFlags, 10000);
 
         // Cleanup interval on unmount
         return () => clearInterval(intervalId);
