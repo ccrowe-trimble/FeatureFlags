@@ -1,12 +1,11 @@
-
 import React, { useState, useEffect } from 'react';
-import { FeatureFlagContext } from './featureFlagContext';
-import { FeatureFlags } from '../Types/featureFlags';
+import { IFeatureFlags } from '../Interfaces/IFeatureFlags';
+import { FeatureFlagContext } from '../Context/featureFlagContext';
 
 // Create the provider component
 
 export const FeatureFlagProvider: React.FC<{ children: React.ReactNode; }> = ({ children }) => {
-    const [flags, setFlags] = useState<FeatureFlags>({} as FeatureFlags);
+    const [flags, setFlags] = useState<IFeatureFlags>({} as IFeatureFlags);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<Error | null>(null);
 
@@ -20,7 +19,7 @@ export const FeatureFlagProvider: React.FC<{ children: React.ReactNode; }> = ({ 
                     }
                     return response.json();
                 })
-                .then((data: FeatureFlags) => {
+                .then((data: IFeatureFlags) => {
                     setFlags(data);
                     setLoading(false);
                 })

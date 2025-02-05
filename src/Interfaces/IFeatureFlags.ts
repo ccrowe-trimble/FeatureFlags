@@ -1,5 +1,5 @@
 // src/types/featureFlags.ts
-export interface FeatureFlags {
+export interface IFeatureFlags {
     enableFeature1: boolean;
     enableFeature2: boolean;
 }

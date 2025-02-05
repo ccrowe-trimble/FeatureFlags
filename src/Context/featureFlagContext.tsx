@@ -1,10 +1,10 @@
 import { createContext } from 'react';
-import { FeatureFlags } from '../Types/featureFlags';
+import { IFeatureFlags } from '../Interfaces/IFeatureFlags';
 
 
 // Define the context type
 interface FeatureFlagContextType {
-    flags: FeatureFlags;
+    flags: IFeatureFlags;
     loading: boolean;
     error: Error | null;
 }
